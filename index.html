@@ -3,95 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraViva | Agro Sustentável</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>AgroSphere | Tecnologia & Sustentabilidade</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        /* --- VARIÁVEIS DE DESIGN (Paleta de Cores Premium Eco) --- */
+        :root {
+            --bg-principal: #0B130E; /* Verde quase preto, ultra moderno */
+            --texto-claro: #F4F7F5;
+            --verde-neon: #39E75F; /* Detalhes de tecnologia */
+            --verde-oliva: #2D5A27;
+            --terra-suave: #D4A373; /* Conexão com o solo */
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-glow: rgba(57, 231, 95, 0.2);
+        }
+
+        /* --- ESTILOS GERAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-claro);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+        }
+
+        /* --- HEADER FLUTUANTE (Glassmorphism) --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(11, 19, 14, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--texto-claro);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--verde-neon);
+        }
+
+        nav a {
+            color: var(--texto-claro);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--verde-neon);
+        }
+
+        /* --- HERO SECTION (O Impacto Visual) --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px 20px;
+            position: relative;
+        }
+
+        /* Detalhe criativo de fundo: Círculo de luz simulando tecnologia no campo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(57, 231, 95, 0.15) 0%, transparent 70%);
+            top: 20%;
+            right: 10%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-conteudo h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero-conteudo h1 span {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--texto-claro);
+            font-style: italic;
+        }
+
+        .hero-conteudo p {
+            font-size: 1.1rem;
+            color: rgba(244, 247, 245, 0.7);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .btn-principal {
+            display: inline-block;
+            background: var(--verde-neon);
+            color: var(--bg-principal);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(57, 231, 95, 0.3);
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(57, 231, 95, 0.5);
+        }
+
+        /* --- CARD INTERATIVO DE DADOS (Diferente e Futurista) --- */
+        .hero-dashboard {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        .card-tag {
+            background: rgba(57, 231, 95, 0.1);
+            color: var(--verde-neon);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .metrica-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .metrica-item {
+            border-left: 2px solid var(--terra-suave);
+            padding-left: 15px;
+        }
+
+        .metrica-numero {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--texto-claro);
+            display: block;
+        }
+
+        .metrica-rotulo {
+            font-size: 0.85rem;
+            color: rgba(244, 247, 245, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-conteudo h1 {
+                font-size: 2.8rem;
+            }
+            .metrica-item {
+                border-left: none;
+                border-top: 2px solid var(--terra-suave);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+            header {
+                width: 95%;
+                padding: 15px 20px;
+            }
+            nav {
+                display: none; /* Simplificação para o escopo mobile */
+            }
+        }
     </style>
 </head>
-<body class="bg-[#FBFBF9] text-[#2C3E2B] overflow-x-hidden">
+<body>
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#FBFBF9]/80 backdrop-blur-md border-b border-[#2C3E2B]/10 px-8 py-4 flex justify-between items-center">
-        <div class="text-2xl font-800 tracking-tight text-[#1A3A1A]">TERRA<span class="text-[#4A7856]">VIVA</span></div>
-        <nav class="hidden md:flex gap-8 font-600 text-sm">
-            <a href="#inicio" class="hover:text-[#4A7856] transition">Início</a>
-            <a href="#impacto" class="hover:text-[#4A7856] transition">Nosso Impacto</a>
-            <a href="#tecnologia" class="hover:text-[#4A7856] transition">Tecnologia</a>
+    <header>
+        <div class="logo">AGRO<b><span>SPHERE</span></b></div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#pilares">Sustentabilidade</a>
+            <a href="#tecnologia">Tecnologia</a>
         </nav>
-        <button class="bg-[#2C3E2B] text-[#FBFBF9] px-5 py-2 rounded-full text-sm font-600 hover:bg-[#4A7856] transition shadow-md">
-            Ver Dashboard
-        </button>
     </header>
 
-    <section id="inicio" class="min-h-screen pt-32 px-8 flex flex-col md:flex-row items-center max-w-7xl mx-auto gap-12">
-        <div class="flex-1 space-y-6">
-            <span class="text-xs font-800 tracking-widest text-[#4A7856] uppercase bg-[#4A7856]/10 px-3 py-1 rounded-full">O Futuro da Agricultura</span>
-            <h1 class="text-5xl md:text-7xl font-800 text-[#1A3A1A] leading-tight">
-                Força que alimenta, <br>
-                <span class="text-[#4A7856] italic font-normal">respeito</span> que renova.
-            </h1>
-            <p class="text-lg text-[#556B2F] max-w-xl">
-                Conectamos a potência do agronegócio moderno com práticas regenerativas que protegem o solo, economizam água e garantem o amanhã.
-            </p>
-            <div class="flex gap-4 pt-4">
-                <a href="#impacto" class="bg-[#4A7856] text-white px-8 py-4 rounded-xl font-600 hover:bg-[#3B6145] transition transform hover:-translate-y-1 shadow-lg">
-                    Explore os Dados
-                </a>
+    <section id="inicio" class="hero">
+        <div class="hero-container">
+            
+            <div class="hero-conteudo">
+                <h1 class="reveal">A força que alimenta o mundo, a <span>tecnologia</span> que protege o solo.</h1>
+                <p class="reveal">O agronegócio do futuro não escolhe entre produtividade e preservação. Nós unimos inteligência de dados, IA generativa no campo e práticas regenerativas para criar uma colheita infinita.</p>
+                <a href="#pilares" class="btn-principal reveal">Conheça o Ecossistema</a>
             </div>
-        </div>
-        
-        <div class="flex-1 relative w-full h-[450px] bg-gradient-to-tr from-[#2C3E2B] to-[#4A7856] rounded-3xl overflow-hidden shadow-2xl p-8 flex flex-col justify-between text-white">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl -mr-20 -mt-20"></div>
-            <div class="flex justify-between items-start z-10">
-                <span class="text-sm font-600 opacity-80">Fazenda Modelo Alpha</span>
-                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2.5 py-1 rounded-full border border-emerald-500/30">100% Carbono Neutro</span>
-            </div>
-            <div class="z-10">
-                <p class="text-xs opacity-60 uppercase tracking-wider mb-1">Status do Solo</p>
-                <h3 class="text-3xl font-800 mb-4">Nutrição Regenerativa</h3>
-                <div class="grid grid-cols-3 gap-4 border-t border-white/20 pt-4">
-                    <div>
-                        <span class="block text-2xl font-600" id="count-agua">0%</span>
-                        <span class="text-[10px] opacity-60 uppercase">Economia Hídrica</span>
+
+            <div class="hero-dashboard reveal">
+                <span class="card-tag">● Monitoramento Regenerativo em Tempo Real</span>
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Fazenda Experimental BioFlorestal</h3>
+                <p style="font-size: 0.9rem; color: rgba(244,247,245,0.6);">Análise automatizada de solo por sensores IoT e créditos de carbono.</p>
+                
+                <div class="metrica-grid">
+                    <div class="metrica-item">
+                        <span class="metrica-numero" id="count-carbono">0</span>
+                        <span class="metrica-rotulo">CO₂ Retido (Ton/Ha)</span>
                     </div>
-                    <div>
-                        <span class="block text-2xl font-600" id="count-biodiv">0%</span>
-                        <span class="text-[10px] opacity-60 uppercase">Biodiversidade</span>
-                    </div>
-                    <div>
-                        <span class="block text-2xl font-600">Bio</span>
-                        <span class="text-[10px] opacity-60 uppercase">Defensivos</span>
+                    <div class="metrica-item">
+                        <span class="metrica-numero" id="count-agua">0%</span>
+                        <span class="metrica-rotulo">Eficiência Hídrica</span>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script>
+        // Função para criar uma animação de contagem progressiva e orgânica nos números
+        function iniciarContador(id, valorFinal, sufixo = "") {
+            const elemento = document.getElementById(id);
+            let valorAtual = 0;
+            const duracao = 2000; // Tempo da animação em milissegundos
+            const passos = 50;
+            const incremento = valorFinal / passos;
+            const intervaloTempo = duracao / passos;
+
+            const timer = setInterval(() => {
+                valorAtual += incremento;
+                if (valorAtual >= valorFinal) {
+                    elemento.innerText = valorFinal + sufixo;
+                    clearInterval(timer);
+                } else {
+                    elemento.innerText = Math.floor(valorAtual) + sufixo;
+                }
+            }, intervaloTempo);
+        }
+
+        // Executa a animação assim que a página é carregada
+        window.addEventListener('DOMContentLoaded', () => {
+            iniciarContador('count-carbono', 142, '');
+            iniciarContador('count-agua', 89, '%');
+        });
+    </script>
 </body>
 </html>
-
-// Função para animar os números do painel (Efeito Contador)
-function animarContador(id, valorFinal, sufixo) {
-    let elemento = document.getElementById(id);
-    let valorAtual = 0;
-    let duracao = 2000; // 2 segundos
-    let incremento = valorFinal / (duracao / 16); // aprox. 60 fps
-
-    let timer = setInterval(() => {
-        valorAtual += incremento;
-        if (valorAtual >= valorFinal) {
-            valorAtual = valorFinal;
-            clearInterval(timer);
-        }
-        elemento.textContent = Math.floor(valorAtual) + sufixo;
-    }, 16);
-}
-
-// Inicia as animações quando o DOM estiver pronto
-document.addEventListener("DOMContentLoaded", () => {
-    // Simula dados vindos de sensores IoT do campo
-    animarContador("count-agua", 42, "%");
-    animarContador("count-biodiv", 87, "%");
-});
