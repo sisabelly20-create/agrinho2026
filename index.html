@@ -71,3 +71,27 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+// Função para animar os números do painel (Efeito Contador)
+function animarContador(id, valorFinal, sufixo) {
+    let elemento = document.getElementById(id);
+    let valorAtual = 0;
+    let duracao = 2000; // 2 segundos
+    let incremento = valorFinal / (duracao / 16); // aprox. 60 fps
+
+    let timer = setInterval(() => {
+        valorAtual += incremento;
+        if (valorAtual >= valorFinal) {
+            valorAtual = valorFinal;
+            clearInterval(timer);
+        }
+        elemento.textContent = Math.floor(valorAtual) + sufixo;
+    }, 16);
+}
+
+// Inicia as animações quando o DOM estiver pronto
+document.addEventListener("DOMContentLoaded", () => {
+    // Simula dados vindos de sensores IoT do campo
+    animarContador("count-agua", 42, "%");
+    animarContador("count-biodiv", 87, "%");
+});
