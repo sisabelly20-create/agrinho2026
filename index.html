@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraViva | Agro Sustentável</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#FBFBF9] text-[#2C3E2B] overflow-x-hidden">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#FBFBF9]/80 backdrop-blur-md border-b border-[#2C3E2B]/10 px-8 py-4 flex justify-between items-center">
+        <div class="text-2xl font-800 tracking-tight text-[#1A3A1A]">TERRA<span class="text-[#4A7856]">VIVA</span></div>
+        <nav class="hidden md:flex gap-8 font-600 text-sm">
+            <a href="#inicio" class="hover:text-[#4A7856] transition">Início</a>
+            <a href="#impacto" class="hover:text-[#4A7856] transition">Nosso Impacto</a>
+            <a href="#tecnologia" class="hover:text-[#4A7856] transition">Tecnologia</a>
+        </nav>
+        <button class="bg-[#2C3E2B] text-[#FBFBF9] px-5 py-2 rounded-full text-sm font-600 hover:bg-[#4A7856] transition shadow-md">
+            Ver Dashboard
+        </button>
+    </header>
+
+    <section id="inicio" class="min-h-screen pt-32 px-8 flex flex-col md:flex-row items-center max-w-7xl mx-auto gap-12">
+        <div class="flex-1 space-y-6">
+            <span class="text-xs font-800 tracking-widest text-[#4A7856] uppercase bg-[#4A7856]/10 px-3 py-1 rounded-full">O Futuro da Agricultura</span>
+            <h1 class="text-5xl md:text-7xl font-800 text-[#1A3A1A] leading-tight">
+                Força que alimenta, <br>
+                <span class="text-[#4A7856] italic font-normal">respeito</span> que renova.
+            </h1>
+            <p class="text-lg text-[#556B2F] max-w-xl">
+                Conectamos a potência do agronegócio moderno com práticas regenerativas que protegem o solo, economizam água e garantem o amanhã.
+            </p>
+            <div class="flex gap-4 pt-4">
+                <a href="#impacto" class="bg-[#4A7856] text-white px-8 py-4 rounded-xl font-600 hover:bg-[#3B6145] transition transform hover:-translate-y-1 shadow-lg">
+                    Explore os Dados
+                </a>
+            </div>
+        </div>
+        
+        <div class="flex-1 relative w-full h-[450px] bg-gradient-to-tr from-[#2C3E2B] to-[#4A7856] rounded-3xl overflow-hidden shadow-2xl p-8 flex flex-col justify-between text-white">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl -mr-20 -mt-20"></div>
+            <div class="flex justify-between items-start z-10">
+                <span class="text-sm font-600 opacity-80">Fazenda Modelo Alpha</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2.5 py-1 rounded-full border border-emerald-500/30">100% Carbono Neutro</span>
+            </div>
+            <div class="z-10">
+                <p class="text-xs opacity-60 uppercase tracking-wider mb-1">Status do Solo</p>
+                <h3 class="text-3xl font-800 mb-4">Nutrição Regenerativa</h3>
+                <div class="grid grid-cols-3 gap-4 border-t border-white/20 pt-4">
+                    <div>
+                        <span class="block text-2xl font-600" id="count-agua">0%</span>
+                        <span class="text-[10px] opacity-60 uppercase">Economia Hídrica</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-600" id="count-biodiv">0%</span>
+                        <span class="text-[10px] opacity-60 uppercase">Biodiversidade</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl font-600">Bio</span>
+                        <span class="text-[10px] opacity-60 uppercase">Defensivos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
